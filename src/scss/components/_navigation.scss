@@ -1,0 +1,63 @@
+.navbar-nav {
+  a {
+    font-size: 18px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .navbar-toggler {
+    margin-left: auto;
+    margin-right: 1rem;
+    width: 34px;
+    height: 30px;
+    outline: none;
+    padding: 5px;
+    &:focus {
+      outline: none;
+    }
+    span {
+      display: block;
+      height: 2px;
+      background: $gray-600;
+      position: relative;
+      &:before,
+      &:after {
+        position: absolute;
+        content: "";
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: $gray-600;
+        transition: transform 300ms;
+      }
+      &:before {
+        top: -6px;
+      }
+      &:after {
+        bottom: -6px;
+      }
+    }
+    &.collapsed {
+      span {
+        background: transparent;
+        &:before {
+          top: 0;
+          transform: rotate(45deg);
+        }
+        &:after {
+          bottom: 0;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 3px;
+    padding: 0.5rem;
+    box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.5);
+  }
+}

@@ -1,0 +1,14 @@
+.top-search {
+  padding: 8px 0;
+  .form-control {
+    background: transparent;
+    border: none;
+    color: $white;
+    &::placeholder {
+      color: $white;
+    }
+  }
+  .btn-addon {
+    color: $white;
+  }
+}
