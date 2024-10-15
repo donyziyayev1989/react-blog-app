@@ -1,0 +1,123 @@
+.grid {
+  position: relative;
+  height: 100%;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid .grid-details {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.grid .grid-details h5 {
+  font-size: 18px;
+}
+
+.grid .grid-details .meta {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+  text-transform: uppercase;
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.grid .grid-details .meta .author {
+  float: right;
+}
+
+.grid .gallery-text {
+  position: absolute;
+  bottom: -50px;
+  padding: 10px;
+  padding-left: 17px;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: all 0.53s;
+  -moz-transition: all 0.53s;
+  -ms-transition: all 0.53s;
+  -o-transition: all 0.53s;
+  transition: all 0.53s;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.grid .gallery-text a {
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.grid:hover .gallery-text {
+  opacity: 1;
+  bottom: 0;
+}
+
+.grid .category {
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.grid .category a {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #2196f3;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.list-blog h5 {
+  font-size: 18px;
+}
+
+.list-blog .category a {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #2196f3;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.list-blog .meta {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+  text-transform: uppercase;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.list-blog .meta .author {
+  float: right;
+}
+.portfolio {
+  margin-top: -30px;
+}
+.portfolio > [class*="col-"] {
+  margin-top: 30px;
+}
+a,
+a:active,
+a:focus {
+  color: #6f6f6f;
+  text-decoration: none;
+  transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+}
+
+a:hover,
+a:active {
+  color: #2196f3;
+  text-decoration: none;
+}

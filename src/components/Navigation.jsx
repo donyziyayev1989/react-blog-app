@@ -1,5 +1,6 @@
 import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
@@ -14,8 +15,12 @@ const Navigation = () => {
           className="justify-content-md-end"
         >
           <Nav>
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">Blog</Nav.Link>
+            <NavLink className="nav-link" to="/">
+              Home
+            </NavLink>
+            <NavLink className="nav-link" to="/posts">
+              Post
+            </NavLink>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
@@ -27,8 +32,12 @@ const Navigation = () => {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#">Contact</Nav.Link>
-            <Nav.Link href="#">About us</Nav.Link>
+            <NavLink className="nav-link" to="/contact">
+              Contact
+            </NavLink>
+            <NavLink className="nav-link" to="/about">
+              About us
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
         <div>
