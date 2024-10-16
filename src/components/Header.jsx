@@ -3,10 +3,10 @@ import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
-    <div>
+    <header className="header">
       <SearchBar />
       <Navigation />
-    </div>
+    </header>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Placeholder, Image } from "react-bootstrap";
+import { Placeholder } from "react-bootstrap";
 
 const PostSkeleton = () => {
   return (
@@ -7,7 +7,7 @@ const PostSkeleton = () => {
         <Placeholder
           as="div"
           animation="glow"
-          style={{ height: "250px", width: "100%", background: "grey" }}
+          style={{ height: "220px", width: "100%", background: "grey" }}
         ></Placeholder>
       </div>
 
@@ -20,15 +20,17 @@ const PostSkeleton = () => {
           <Placeholder xs={12} />
           <Placeholder xs={12} />
         </Placeholder>
-        <div className="d-flex mb-3">
-          <Placeholder as="span" animation="glow">
-            <Placeholder xs={3} bg="primary" />
+        <div className="mb-3">
+          <Placeholder as="div" animation="glow">
+            <Placeholder xs={3} />
           </Placeholder>
         </div>
 
         <div className="meta">
-          <Placeholder>
-            <Placeholder xs={3} bg="primary" />
+          <Placeholder animation="glow" as="div">
+            <Placeholder xs={2} className="me-2" />
+            <Placeholder xs={2} className="me-2" />
+            <Placeholder xs={2} className="me-2" />
           </Placeholder>
         </div>
       </div>

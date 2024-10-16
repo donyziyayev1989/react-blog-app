@@ -121,3 +121,51 @@ a:active {
   color: #2196f3;
   text-decoration: none;
 }
+.comments-area .comment-box {
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #eee;
+}
+.comment-box .author-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #dddddd;
+  float: left;
+}
+
+.comment-box .comment-info {
+  margin-left: 100px;
+}
+
+.comment-box .comment-info h6 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.comment-box .comment-info .reply {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.comment-box .comment-info .reply i {
+  padding-right: 5px;
+  font-size: 12px;
+}
+.comment-form {
+  .form-control {
+    border-radius: 0;
+    outline: none !important;
+    box-shadow: none;
+    padding: 10px;
+    &:hover,
+    &:focus {
+      border-color: #525252;
+    }
+  }
+  textarea {
+    min-height: 130px;
+  }
+}
