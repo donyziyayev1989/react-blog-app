@@ -8,7 +8,6 @@ import Post from "../pages/Post";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import SinglePost from "../pages/SinglePost";
-import PostByTag from "../pages/PostByTag";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +22,7 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Post /> },
           { path: ":postId", element: <SinglePost /> },
-          { path: "tag/:tag", element: <PostByTag /> },
+          { path: "tag/:tag", element: <Post /> },
         ],
       },
       { path: "about", element: <About /> },

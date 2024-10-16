@@ -4,25 +4,34 @@ import { useGetPostsQuery } from "../slices/postsApiSlice";
 import PostItem from "../components/PostItem";
 import Pagination from "../components/Pagination";
 import PostSkeleton from "../components/PostSkeleton";
+import { useParams } from "react-router-dom";
 
 const Post = () => {
   const [page, setPage] = useState(1);
-  const limit = 2;
-
+  const { tag } = useParams();
   const {
     data: posts,
     isError,
     isLoading,
     error,
-  } = useGetPostsQuery(page, limit);
+  } = useGetPostsQuery({
+    page,
+    tag,
+    limit: 10,
+  });
 
   // Scroll to top when paginating
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [page]);
-
+  console.log(posts);
   return (
     <>
+      {tag && (
+        <h1 className="h3 mb-4">
+          Posts with tag: <strong>{tag}</strong>
+        </h1>
+      )}
       {isLoading ? (
         <Row className="portfolio">
           {[...Array(10).keys()].map((v) => (

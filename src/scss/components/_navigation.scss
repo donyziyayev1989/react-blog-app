@@ -3,6 +3,9 @@
     font-size: 18px;
   }
 }
+.header {
+  border-bottom: 1px solid #ececec;
+}
 
 @include media-breakpoint-down(md) {
   .navbar-toggler {

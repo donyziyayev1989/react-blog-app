@@ -12,19 +12,15 @@ const Sidebar = () => {
 
   function handleViewCategory() {
     setIndex((prev) => prev + 1);
-
-    if (index < categories.length) {
+  }
+  useEffect(() => {
+    if (categories && index < categories.length) {
       setCategory((prevCategories) => [
         ...prevCategories,
         ...categories[index],
       ]);
     }
-  }
-  useEffect(() => {
-    if (categories) {
-      setCategory(categories[0]);
-    }
-  }, [categories]);
+  }, [categories, index]);
 
   return (
     <div className="side-bar pl-lg-3">
