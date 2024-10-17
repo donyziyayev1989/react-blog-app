@@ -18,21 +18,32 @@ export const postsApiSlice = apiSlice.injectEndpoints({
       //     };
       //   },
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
-        let { page, tag, limit } = _arg;
+        let { page, tag, limit, searchQuery } = _arg;
         if (limit === undefined) {
           limit = 10;
         }
         let url = `${POST_URL}?limit=${limit}&skip=${
-          (page - 1) * limit
+          page * limit
         }&select=id,title,tags,body`;
 
         if (tag) {
           url = `${POST_URL}/tag/${tag}?limit=${limit}&skip=${
-            (page - 1) * limit
+            page * limit
           }&select=id,title,tags,body`;
         }
+        if (searchQuery && searchQuery !== "") {
+          url = `${POST_URL}/search?q=${searchQuery}&limit=${limit}&skip=${
+            page * limit
+          }&select=id,title,tags,body`;
+        }
+        if (tag) {
+          url = `${POST_URL}/tag/${tag}?limit=${limit}&skip=${
+            page * limit
+          }&select=id,title,tags,body`;
+        }
+
         const result = await fetchWithBQ(url);
-        const totalPage = Math.ceil(result.data.total / result.data.limit);
+        const totalPage = Math.ceil(result.data.total / limit);
 
         return result.data
           ? { data: { ...result.data, totalPage } }
@@ -56,11 +67,6 @@ export const postsApiSlice = apiSlice.injectEndpoints({
         return chunkArrayLoop(response, 30);
       },
       keepUnusedDateFor: 30,
-    }),
-    getPostsByTags: builder.query({
-      query: (tag) => ({
-        url: `${POST_URL}/tag/${tag}`,
-      }),
     }),
   }),
 });

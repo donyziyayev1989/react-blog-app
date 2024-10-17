@@ -1,12 +1,14 @@
 import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ handleClick }) => {
   return (
     <Container>
       <Navbar expand="lg">
-        <Navbar.Brand href="/">Live Blog</Navbar.Brand>
+        <Navbar.Brand as="div">
+          <Link to="/">Live Blog</Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar-nav">
           <span></span>
         </Navbar.Toggle>
@@ -41,7 +43,7 @@ const Navigation = () => {
           </Nav>
         </Navbar.Collapse>
         <div>
-          <Button variant="link">
+          <Button variant="link" onClick={handleClick}>
             <FaSearch />
           </Button>
         </div>

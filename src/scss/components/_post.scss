@@ -4,6 +4,7 @@
   background: #f8f9fa;
   display: flex;
   flex-direction: column;
+  box-shadow: 1px 1px 3px #ddd;
 }
 
 .grid .grid-details {
@@ -122,8 +123,8 @@ a:active {
   text-decoration: none;
 }
 .comments-area .comment-box {
-  padding-bottom: 30px;
-  margin-bottom: 50px;
+  padding-bottom: 25px;
+  margin-bottom: 30px;
   border-bottom: 1px solid #eee;
 }
 .comment-box .author-thumb {

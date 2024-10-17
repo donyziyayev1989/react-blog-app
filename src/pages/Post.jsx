@@ -5,10 +5,12 @@ import PostItem from "../components/PostItem";
 import Pagination from "../components/Pagination";
 import PostSkeleton from "../components/PostSkeleton";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Post = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const { tag } = useParams();
+  const { query: q } = useSelector((state) => state.search);
   const {
     data: posts,
     isError,
@@ -16,22 +18,35 @@ const Post = () => {
     error,
   } = useGetPostsQuery({
     page,
-    tag,
+    tag: tag,
     limit: 10,
+    searchQuery: q,
   });
 
   // Scroll to top when paginating
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [page]);
-  console.log(posts);
+  }, [page, tag, q]);
+
+  // Page title
+  let title;
+  if (q) {
+    title = (
+      <h1 className="h3 mb-4">
+        Found <strong>{posts.total}</strong> results for: <strong>{q}</strong>
+      </h1>
+    );
+  }
+  if (tag) {
+    title = (
+      <h1 className="h3 mb-4">
+        Posts with tag: <strong>{tag}</strong>
+      </h1>
+    );
+  }
   return (
     <>
-      {tag && (
-        <h1 className="h3 mb-4">
-          Posts with tag: <strong>{tag}</strong>
-        </h1>
-      )}
+      {title}
       {isLoading ? (
         <Row className="portfolio">
           {[...Array(10).keys()].map((v) => (
@@ -52,12 +67,14 @@ const Post = () => {
             ))}
           </Row>
           <div className="mt-5">
-            <Pagination
-              pageCount={posts.totalPage}
-              onPageChange={(e) => {
-                setPage(e.selected);
-              }}
-            />
+            {posts.totalPage > 1 && (
+              <Pagination
+                pageCount={posts.totalPage}
+                onPageChange={(e) => {
+                  setPage(e.selected);
+                }}
+              />
+            )}
           </div>
         </>
       ) : (

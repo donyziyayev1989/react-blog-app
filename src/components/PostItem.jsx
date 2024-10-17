@@ -23,7 +23,7 @@ const PostItem = ({ title, body, tags, id }) => {
         <div className="meta">
           {tags.map((tag, index) => (
             <span className="category" key={index}>
-              <Link to={`tag/${tag}`}>{tag}</Link>,
+              <Link to={`/posts/tag/${tag}`}>{tag}</Link>,
             </span>
           ))}
         </div>

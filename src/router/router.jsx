@@ -22,6 +22,7 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Post /> },
           { path: ":postId", element: <SinglePost /> },
+          { path: `?q=:query`, element: <Post /> },
           { path: "tag/:tag", element: <Post /> },
         ],
       },
