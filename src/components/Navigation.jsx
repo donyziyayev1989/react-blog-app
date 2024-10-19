@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 const Navigation = ({ handleClick }) => {
   return (
     <Container>
-      <Navbar expand="lg">
+      <Navbar expand="md">
         <Navbar.Brand as="div">
           <Link to="/">Live Blog</Link>
         </Navbar.Brand>

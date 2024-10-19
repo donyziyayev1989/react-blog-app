@@ -13,6 +13,7 @@ const Sidebar = () => {
   function handleViewCategory() {
     setIndex((prev) => prev + 1);
   }
+
   useEffect(() => {
     if (categories && index < categories.length) {
       setCategory((prevCategories) => [

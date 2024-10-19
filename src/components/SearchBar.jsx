@@ -1,7 +1,7 @@
 import { forwardRef, useRef } from "react";
 import { Container, Form, InputGroup, Button } from "react-bootstrap";
 import { FaSearch, FaTimes } from "react-icons/fa";
-import { setSearch } from "../slices/searchSlice";
+import { setSearch } from "../slices/postSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -9,13 +9,14 @@ const SearchBar = forwardRef(function SearchBar(props, ref) {
   const myInputRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { handleClick, ...otherProps } = props;
+  const { handleClick, dataShow, ...otherProps } = props;
 
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(setSearch(myInputRef.current.value));
     navigate("/posts");
     myInputRef.current.value = "";
+    handleClick();
   }
   return (
     <div {...otherProps} ref={ref}>

@@ -18,26 +18,28 @@ export const postsApiSlice = apiSlice.injectEndpoints({
       //     };
       //   },
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
-        let { page, tag, limit, searchQuery } = _arg;
+        let { page, tag, limit, searchQuery, sortBy } = _arg;
+        let sortQuery = "";
+
         if (limit === undefined) {
           limit = 10;
         }
-        let url = `${POST_URL}?limit=${limit}&skip=${
+
+        if (sortBy !== "") {
+          const [sort, order] = sortBy.split(";");
+          sortQuery = `sortBy=${sort}&order=${order}&`;
+        }
+        let url = `${POST_URL}?${sortQuery}&limit=${limit}&skip=${
           page * limit
         }&select=id,title,tags,body`;
 
-        if (tag) {
-          url = `${POST_URL}/tag/${tag}?limit=${limit}&skip=${
-            page * limit
-          }&select=id,title,tags,body`;
-        }
         if (searchQuery && searchQuery !== "") {
-          url = `${POST_URL}/search?q=${searchQuery}&limit=${limit}&skip=${
+          url = `${POST_URL}/search?q=${searchQuery}&${sortQuery}limit=${limit}&skip=${
             page * limit
           }&select=id,title,tags,body`;
         }
         if (tag) {
-          url = `${POST_URL}/tag/${tag}?limit=${limit}&skip=${
+          url = `${POST_URL}/tag/${tag}?&${sortQuery}limit=${limit}&skip=${
             page * limit
           }&select=id,title,tags,body`;
         }

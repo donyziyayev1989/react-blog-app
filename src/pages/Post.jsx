@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Alert, Row, Col } from "react-bootstrap";
 import { useGetPostsQuery } from "../slices/postsApiSlice";
 import PostItem from "../components/PostItem";
 import Pagination from "../components/Pagination";
 import PostSkeleton from "../components/PostSkeleton";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import Sort from "../components/Sort";
 
 const Post = () => {
   const [page, setPage] = useState(0);
   const { tag } = useParams();
-  const { query: q } = useSelector((state) => state.search);
+  const { query: q, sortBy } = useSelector((state) => state.post);
+
   const {
     data: posts,
     isError,
@@ -21,12 +23,13 @@ const Post = () => {
     tag: tag,
     limit: 10,
     searchQuery: q,
+    sortBy,
   });
 
   // Scroll to top when paginating
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [page, tag, q]);
+  }, [page, tag]);
 
   // Page title
   let title;
@@ -59,6 +62,7 @@ const Post = () => {
         <Alert variant="danger">{error.error || error?.data?.message}</Alert>
       ) : posts ? (
         <>
+          <Sort />
           <Row className="portfolio" key={page}>
             {posts.posts.map((post) => (
               <Col key={post.id} sm={6}>
@@ -70,6 +74,7 @@ const Post = () => {
             {posts.totalPage > 1 && (
               <Pagination
                 pageCount={posts.totalPage}
+                key={tag}
                 onPageChange={(e) => {
                   setPage(e.selected);
                 }}
